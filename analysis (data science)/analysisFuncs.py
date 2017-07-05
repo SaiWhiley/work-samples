@@ -33,3 +33,11 @@ def clean(defaultsDF, orgSettingsDF):
         else:
             print("Setting missing in orgSettings:" + listOfSettings[setting] + ", row dropped from defaults")
             defaultsDF = defaultsDF[defaultsDF.setting != listOfSettings[setting]]
+    defaultsDF = defaultsDF.reset_index()
+    del defaultsDF['index']
+    return defaultsDF
+
+def percentageSettingsChanged(defaultsDF, orgSettingsDF):
+    for setting in range(len(getSettings(defaultsDF))):
+        print(defaultsDF['setting'][setting] +' ' +  defaultsDF[' default'][setting])
+        print(orgSettingsDF[defaultsDF['setting'][setting]])
