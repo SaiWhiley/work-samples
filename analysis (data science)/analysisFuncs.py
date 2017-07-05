@@ -29,8 +29,7 @@ def clean(defaultsDF, orgSettingsDF):
     listOfSettings = getSettings(defaultsDF)
     for setting in range(len(listOfSettings)):
         if(listOfSettings[setting] in list(orgSettingsDF)):
-            print(listOfSettings[setting])
+            continue
         else:
-            print("Missing setting:" + listOfSettings[setting])
-            defaults = defaultsDF[defaultsDF.setting != listOfSettings[setting]]
-    print(defaults)
+            print("Setting missing in orgSettings:" + listOfSettings[setting] + ", row dropped from defaults")
+            defaultsDF = defaultsDF[defaultsDF.setting != listOfSettings[setting]]
