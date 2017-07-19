@@ -39,5 +39,12 @@ def clean(defaultsDF, orgSettingsDF):
 
 def percentageSettingsChanged(defaultsDF, orgSettingsDF):
     for setting in range(len(getSettings(defaultsDF))):
-        print(defaultsDF['setting'][setting] +' ' +  defaultsDF[' default'][setting])
-        print(orgSettingsDF[defaultsDF['setting'][setting]])
+        #get name of setting and current value
+        #default value of an index 'setting' -> defaultsDF[' default'][setting]
+        print('setting = ' + defaultsDF['setting'][setting] +' default = ' +  defaultsDF[' default'][setting])
+        #orgSettingsDF[defaultsDF['setting'][setting]] -> gets all entries for the setting
+        for user in range(orgSettingsDF.shape[0]):
+            print('user = ' + str(user) + ' setting  = ' + str(orgSettingsDF[defaultsDF['setting'][setting]][user]))
+
+            if(str(orgSettingsDF[defaultsDF['setting'][setting]][user]) != defaultsDF[' default'][setting]):
+                print('changed')

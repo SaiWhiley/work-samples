@@ -8,9 +8,10 @@ defaults = pd.read_csv(defaultsCsv)
 orgSettings = pd.read_csv(orgSettingsCsv)
 
 defaults = clean(defaults, orgSettings)
-print(defaults)
 
 percentageSettingsChanged(defaults, orgSettings)
+
+
 
 
 
